@@ -5,10 +5,11 @@ import requests
 import json
 from transformers import AutoImageProcessor, AutoModelForImageClassification
 from langchain import OpenAI, LLMChain, PromptTemplate
+import os
 
 # Set OpenAI and Hugging Face API keys
-openai_api_key = 'sk-proj-NQejuW74NI1INeyINjdqT3BlbkFJd2gDTCmESkzvMNakxcoc'
-hf_api_token = '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'
+openai_api_key = os.getenv('OPENAI_API_KEY')
+hf_api_token = os.getenv('HUGGING_FACE_TOKEN')
 
 
 # Initialize LangChain OpenAI LLM
