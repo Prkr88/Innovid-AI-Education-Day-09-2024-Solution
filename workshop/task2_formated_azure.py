@@ -15,7 +15,7 @@ from langchain import LLMChain, PromptTemplate
 load_dotenv(find_dotenv())
 
 # Set up OpenAI API using credentials stored in Streamlit secrets
-client = openai.OpenAI(api_key=st.secrets["openai_api_key"])
+client = openai.OpenAI(api_key=os.getenv("AZURE_OPENAI_API_KEY"))
 
 # Set up Spotify API using client credentials from Streamlit secrets
 sp = spotipy.Spotify(auth_manager=SpotifyClientCredentials(

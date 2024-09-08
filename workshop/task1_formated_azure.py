@@ -8,6 +8,7 @@ import os
 # Load environment variables from a .env file
 load_dotenv(find_dotenv())
 
+
 # Function to convert an image to text using a pre-trained image captioning model
 def extract_description_from_image(url):
     # Use the BLIP image captioning model to generate a text description of the image
@@ -18,15 +19,14 @@ def extract_description_from_image(url):
     return text
 
 
-
 # Function to generate a story based on a given scenario using LangChain
 def generate_story(scenario):
     # Initialize the OpenAI LLM with the API key loaded from the environment
     llm = AzureChatOpenAI(openai_api_key=os.getenv("AZURE_OPENAI_API_KEY"),
-                 azure_endpoint=os.getenv("AZURE_OPENAI_ENDPOINT"),
-                 deployment_name=os.getenv("CHAT_MODEL"),
-                 openai_api_version=os.getenv("OPENAI_API_VERSION")
-                 )
+                          azure_endpoint=os.getenv("AZURE_OPENAI_ENDPOINT"),
+                          deployment_name=os.getenv("CHAT_MODEL"),
+                          openai_api_version=os.getenv("OPENAI_API_VERSION")
+                          )
 
     # Define the prompt template that will be used to generate the story
     template = """
@@ -43,7 +43,6 @@ def generate_story(scenario):
 
     # Run the chain with the scenario to generate a story
     story = chain.run(scenario)
-
 
     print(story)
     return story
